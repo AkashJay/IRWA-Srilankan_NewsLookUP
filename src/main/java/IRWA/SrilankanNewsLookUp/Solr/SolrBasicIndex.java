@@ -32,22 +32,6 @@ public class SolrBasicIndex {
 				//Index the documents
 				index();
 				
-//				//Then create the Query
-//				SolrQuery query = basicQuery("1");
-//				System.out.println("Query formed as "+query.toQueryString());
-//				
-//				//Then execute the query and get the Document list that match the query
-//				SolrDocumentList documentList = executeQuery(query);
-//			
-//						
-//				//At last print the returned documents
-//				printAsDocuments(documentList);
-//				printAsDocumentsAsABean(documentList);
-				
-				
-				
-				//Now we will try to delete a document for the given query
-				//executeDelete(query);
 				
 				
 			}
