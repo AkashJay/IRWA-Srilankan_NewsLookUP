@@ -36,7 +36,8 @@ public class SolrBasicIndex {
 				SolrQuery query = basicQuery("1");
 				System.out.println("Query formed as "+query.toQueryString());
 				
-				
+				//Then execute the query and get the Document list that match the query
+				SolrDocumentList documentList = executeQuery(query);
 				
 				
 				
@@ -67,5 +68,18 @@ public class SolrBasicIndex {
 				query.set(CommonParams.Q, buffer.toString());
 				
 				return query;
+			}
+			
+			private static SolrDocumentList executeQuery(SolrQuery query) throws SolrServerException, IOException {
+				
+				//Limit the output
+				query.setRows(10);
+				//Execute the query and catch to a QueryResponse
+				QueryResponse response = client.query(query);
+				
+				SolrDocumentList result	 = response.getResults();
+				System.out.println("No of document returened : "+result.getNumFound());
+				
+				return result;
 			}
 }
