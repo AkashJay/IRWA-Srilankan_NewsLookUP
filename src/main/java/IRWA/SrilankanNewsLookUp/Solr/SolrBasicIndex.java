@@ -32,6 +32,12 @@ public class SolrBasicIndex {
 				//Index the documents
 				index();
 				
+				//Then create the Query
+				SolrQuery query = basicQuery("1");
+				System.out.println("Query formed as "+query.toQueryString());
+				
+				
+				
 				
 				
 			}
@@ -49,5 +55,17 @@ public class SolrBasicIndex {
 				client.commit();
 				
 				
+			}
+			
+			private static SolrQuery basicQuery(String id) {
+				//Build the query
+				
+				StringBuffer buffer = new StringBuffer();
+				buffer.append(SolrConstant.id).append(":").append(id);
+				
+				SolrQuery query = new SolrQuery();
+				query.set(CommonParams.Q, buffer.toString());
+				
+				return query;
 			}
 }
