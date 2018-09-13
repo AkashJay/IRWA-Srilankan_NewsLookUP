@@ -6,9 +6,14 @@ import java.io.IOException;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.beans.DocumentObjectBinder;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
+import org.apache.solr.common.params.CommonParams;
+
 
 public class SolrBasicIndex {
 	
@@ -22,7 +27,7 @@ public class SolrBasicIndex {
 			public static void main(String[] args) throws SolrServerException, IOException {
 				
 				//Access the bookstore core using solr client object created above
-				 client = new HttpSolrClient.Builder("http://localhost:8983/solr/news_lookup").build();
+				 client = ApacheSolrClient.getInstance().getClient();
 				
 				//client = new HttpSolrClient("http://localhost:8983/solr/bookstore");
 				 System.out.println("Solr client created "+ ((HttpSolrClient) client).getBaseURL());
@@ -33,7 +38,7 @@ public class SolrBasicIndex {
 				index();
 				
 				//Then create the Query
-				SolrQuery query = basicQuery("1");
+				SolrQuery query = basicQuery("27");
 				System.out.println("Query formed as "+query.toQueryString());
 				
 				//Then execute the query and get the Document list that match the query
