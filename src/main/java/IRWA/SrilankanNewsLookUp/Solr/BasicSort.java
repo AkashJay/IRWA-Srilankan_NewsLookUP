@@ -27,6 +27,8 @@ public class BasicSort {
 		System.out.println("Query " + query.toQueryString());
 		SolrDocumentList solrDocs = executeQuery(query);
 		
+		printAsBeans(solrDocs);
+		
 	}
 	
 	private static SolrDocumentList executeQuery(SolrQuery query) throws SolrServerException, IOException {
@@ -37,6 +39,14 @@ public class BasicSort {
 		return results;
 	}
 	
+	
+	private static void printAsBeans(SolrDocumentList solrDocumentList) {
+		for (SolrDocument doc : solrDocumentList) {
+			DocumentObjectBinder bind = new DocumentObjectBinder();
+			Bean bean = bind.getBean(Bean.class, doc);
+			System.out.println(bean);
+		}
+	}
 	
 	
 
