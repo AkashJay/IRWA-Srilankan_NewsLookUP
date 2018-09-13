@@ -3,8 +3,10 @@ package IRWA.SrilankanNewsLookUp.Solr;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.math3.geometry.partitioning.BSPTreeVisitor.Order;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.beans.DocumentObjectBinder;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -38,6 +40,10 @@ public class SolrBasicIndex {
 				index();
 				
 				//Then create the Query
+				
+				//SolrQuery query = new SolrQuery();
+				//query.set(CommonParams.Q, "*:*");
+				//query.addsort(SolrConstant.date , ORDER.asc);
 				SolrQuery query = basicQuery("27");
 				System.out.println("Query formed as "+query.toQueryString());
 				
