@@ -47,6 +47,7 @@ public class SolrBasicIndex {
 				
 				//At last print the returned documents
 				printAsDocuments(documentList);
+				printAsBeans(documentList);
 			}
 			
 			private static void index() throws SolrServerException, IOException {
@@ -96,5 +97,13 @@ public class SolrBasicIndex {
 					System.out.println("id value is : "+object);
 				}
 				
+			}
+			
+			private static void printAsBeans(SolrDocumentList solrDocumentList) {
+				for (SolrDocument doc : solrDocumentList) {
+					DocumentObjectBinder bind = new DocumentObjectBinder();
+					Bean bean = bind.getBean(Bean.class, doc);
+					System.out.println(bean);
+				}
 			}
 }
