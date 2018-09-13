@@ -40,7 +40,8 @@ public class SolrBasicIndex {
 				SolrDocumentList documentList = executeQuery(query);
 				
 				
-				
+				//At last print the returned documents
+				printAsDocuments(documentList);
 			}
 			
 			private static void index() throws SolrServerException, IOException {
@@ -81,5 +82,14 @@ public class SolrBasicIndex {
 				System.out.println("No of document returened : "+result.getNumFound());
 				
 				return result;
+			}
+			
+			private static void printAsDocuments(SolrDocumentList documentList) {
+				
+				for(SolrDocument document : documentList) {
+					Object object = document.get(SolrConstant.id);
+					System.out.println("id value is : "+object);
+				}
+				
 			}
 }
