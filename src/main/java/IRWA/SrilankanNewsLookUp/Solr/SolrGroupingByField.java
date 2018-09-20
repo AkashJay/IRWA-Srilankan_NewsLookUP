@@ -31,6 +31,7 @@ public class SolrGroupingByField {
 		query.set(GroupParams.GROUP, "true");
 		query.set(GroupParams.GROUP_FIELD, "date");
 		query.add(GroupParams.GROUP_FIELD, "date");
+		//Limit no of document to return in a group
 		query.set(GroupParams.GROUP_LIMIT, "3");
 
 		System.out.println("Query " + query.toQueryString());

@@ -20,7 +20,7 @@ import org.apache.solr.common.params.CommonParams;
 public class SolrBasicIndex {
 	
 	//Diretory file path to read json files
-			public static File solrJsonDirectory1 = new File("/home/akash/Documents/News_ApacheSolr/hiru");
+			public static File solrJsonDirectory1 = new File("/home/akash/Documents/News_ApacheSolr/hiruNews");
 			
 			//Create a solr client object to connect to solr in local
 			private static SolrClient client = null;
@@ -44,7 +44,7 @@ public class SolrBasicIndex {
 				//SolrQuery query = new SolrQuery();
 				//query.set(CommonParams.Q, "*:*");
 				//query.addsort(SolrConstant.date , ORDER.asc);
-				SolrQuery query = basicQuery("27");
+				SolrQuery query = basicQuery("Special Cabinet meeting ends");
 				System.out.println("Query formed as "+query.toQueryString());
 				
 				//Then execute the query and get the Document list that match the query
@@ -75,7 +75,7 @@ public class SolrBasicIndex {
 				//Build the query
 				
 				StringBuffer buffer = new StringBuffer();
-				buffer.append(SolrConstant.id).append(":").append(id);
+				buffer.append(SolrConstant.heading).append(":\"").append(id).append("\"");
 				
 				SolrQuery query = new SolrQuery();
 				query.set(CommonParams.Q, buffer.toString());
